@@ -1,6 +1,7 @@
 "use client"
 import Image from 'next/image'
-import React from 'react'
+
+
 
 const Company_logo = () => {
   return (
@@ -66,14 +67,3 @@ const Company_logo = () => {
 
 export default Company_logo
 
-// <div className='w-full'>
-//       <div className='flex w-[1250px] justify-between mx-auto my-12 sm:w-[]'>
-//       <Image src={require('@/public/company-logo/logo@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       <Image src={require('@/public/company-logo/logo1@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       <Image src={require('@/public/company-logo/logo2@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       <Image src={require('@/public/company-logo/logo3@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       <Image src={require('@/public/company-logo/logo4@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       <Image src={require('@/public/company-logo/logo5@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       <Image src={require('@/public/company-logo/logo6@2x.png')} alt='logo-1 ' height={85} width={85} className='hover:cursor-pointer'/>
-//       </div>
-//     </div>
