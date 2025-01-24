@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
   const product = await getProduct(slug);
   
-  // const {qty,incQty,decQty}:any = useContext (CartContext)
+  
   return (
     <section>
       <div className="w-full lg:my-5 mt-3 md:my-10 px-4 ">

@@ -7,7 +7,7 @@ const NewStyle = () => {
   return (
    
     <section className='px-4'>
-  <div className="flex flex-col lg:flex-row gap-4 max-w-screen-xl mx-auto my-[50px] md:my-[150px] ">
+  <div className="flex flex-col lg:flex-row gap-4 max-w-screen-xl mx-auto my-[50px] md:my-[100px] ">
     {/* Large Image Section */}
     <div className="w-full lg:w-[620px]">
       <Image

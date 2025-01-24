@@ -3,6 +3,7 @@
 import { addToCart } from "@/app/actions/actions";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import { ourProducts } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -34,9 +35,7 @@ const Product = () => {
   const [products, setProducts] = useState<Products[]>([]);
   useEffect(() => {
     async function fetchProduct() {
-      const fetchedProduct: Products[] = await client.fetch(
-        `*[_type == "products"][0..7]`
-      );
+      const fetchedProduct: Products[] = await client.fetch(ourProducts);
       setProducts(fetchedProduct);
     }
     fetchProduct();
@@ -55,7 +54,7 @@ const Product = () => {
 
   return (
     <section>
-      <div className="w-full px-4">
+      <div className="w-full px-4 mb-10">
         <h2 className="max-w-screen-xl mx-auto font-bold text-3xl mb-10 text-[#272343] text-center lg:text-start">
           Our Products
         </h2>

@@ -8,6 +8,7 @@ import { GrCart } from "react-icons/gr";
 import { urlFor } from "@/sanity/lib/image";
 import { addToCart } from "@/app/actions/actions";
 import Swal from "sweetalert2"
+import {  featuredProducts } from "@/sanity/lib/queries";
 export interface Products {
   _id: string;
   title: string;
@@ -34,8 +35,10 @@ const Product = () => {
   const [products, setProducts] = useState<Products[]>([]);
 useEffect(()=>{
   async function fetchProduct(){
-    const fetchedProduct :Products[]= await client.fetch(`*[_type == "products" && "featured" in tags][0..3]`)
+    const fetchedProduct :Products[]= await client.fetch(featuredProducts)
     setProducts(fetchedProduct)
+    // `*[_type == "products" && "featured" in tags][0..3]`
+    
   }
   fetchProduct()
 },[])

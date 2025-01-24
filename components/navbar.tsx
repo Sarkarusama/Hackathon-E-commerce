@@ -93,7 +93,7 @@ const Navbar = () => {
           {/* Cart Button */}
           <div>
             <Link href={"/cart"}>
-              <button  className="flex items-center bg-white px-5 py-2 gap-2 rounded-md hover:bg-gray-50 text-sm sm:text-base lg:text-lg">
+              <button  className="flex items-center bg-white px-2 py-2 gap-1 rounded-md hover:bg-gray-50 text-sm sm:text-base lg:text-lg">
                 <IoCartOutline className="text-lg sm:text-xl lg:text-2xl" />
                 Cart
                 {/* <span className="w-5 h-5 rounded-full text-center bg-[#007580] text-white md:text-sm sm:text-xs lg:text-sm">

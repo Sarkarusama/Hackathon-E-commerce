@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
+import { topCategory } from "@/sanity/lib/queries";
 
 type Category = {
   _id: string;
@@ -17,15 +18,7 @@ const CategoryListPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const result = await client.fetch(`
-        *[_type == "categories"]{
-          _id,
-          title,
-          'imageUrl': image.asset->url,
-          products
-          
-        }
-      `);
+      const result = await client.fetch(topCategory);
 
       setCategories(result);
     } catch (error) {
