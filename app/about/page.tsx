@@ -10,9 +10,9 @@ const About = () => {
     <section>
       <div>
         {/* about us-comforty */}
-        <div className="w-full max-w-screen-xl mx-auto my-20 px-4 md:px-4 lg:px-0">
+        <div className="w-full max-w-screen-xl mx-auto my-5 px-4 md:px-4 lg:px-0">
           <div className="flex flex-col md:flex-row justify-between mx-auto gap-5">
-            <div className="w-full lg:h-auto lg:w-[615px] bg-[#007580] lg:p-20 p-10 md:p-10">
+            <div className="w-full lg:h-[530px] lg:w-[615px] bg-[#007580] lg:p-20 p-10 md:p-10">
               <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-5">
                 About Us-Comforty
               </p>
@@ -29,10 +29,10 @@ const About = () => {
             <div className="w-full md:w-[615px] flex justify-center">
               <Image
                 src={require("@/public/about-popular/product_1.png")}
-                height={615}
+                height={530}
                 width={615}
                 alt="chair"
-                className="w-full max-w-[400px] md:max-w-full"
+                className="w-full h-[530px] max-w-[400px] md:max-w-full"
               />
             </div>
           </div>
@@ -42,7 +42,7 @@ const About = () => {
               What makes our Brand Different
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
-              <div className="bg-[#F0F2F3] p-10 text-[#029FAE]">
+              <div className="bg-[#F0F2F3] p-10 text-[#029FAE] hover:scale-105 duration-300 cursor-pointer">
                 <p>
                   <TbTruckDelivery className="mb-3 text-2xl" />
                 </p>
@@ -51,7 +51,7 @@ const About = () => {
                   Order before 3pm and get your order the next day as standard
                 </p>
               </div>
-              <div className="bg-[#F0F2F3] p-10 text-[#029FAE]">
+              <div className="bg-[#F0F2F3] p-10 text-[#029FAE] hover:scale-105 duration-300 cursor-pointer">
                 <p>
                   <CiCircleCheck className="mb-3 text-2xl" />
                 </p>
@@ -61,7 +61,7 @@ const About = () => {
                   craftsmanship
                 </p>
               </div>
-              <div className="bg-[#F0F2F3] p-10 text-[#029FAE]">
+              <div className="bg-[#F0F2F3] p-10 text-[#029FAE] hover:scale-105 duration-300 cursor-pointer">
                 <p>
                   <Image
                     src={require("@/public/purchase/Purchase.png")}
@@ -75,7 +75,7 @@ const About = () => {
                   anywhere
                 </p>
               </div>
-              <div className="bg-[#F0F2F3] p-10 text-[#029FAE]">
+              <div className="bg-[#F0F2F3] p-10 text-[#029FAE] hover:scale-105 duration-300 cursor-pointer">
                 <p>
                   <PiPlantFill className="mb-3 text-2xl" />
                 </p>
@@ -93,34 +93,34 @@ const About = () => {
               <p className="text-3xl text-center lg:text-left  font-bold">Our Popular Products</p>
             </div>
 
-            <div className="flex flex-col justify-between lg:flex-row items-center ">
-              <div>
+            <div className="flex flex-col  gap-6 justify-between lg:flex-row items-center ">
+              <div className="hover:scale-105 duration-300 cursor-pointer shadow-md p-2  rounded-md">
                 <Image
                   src={require("@/public/about-popular/large.png")}
                   alt="sofa"
-                  width={600}
-                  className="w-[600px] mb-3"
+                  width={650}
+                  height={350}
+                  className="w-[650px] h-auto lg:h-[350px] mb-3 rounded-md"
                 />
                 <p className="mb-1 text-center lg:text-left ">The Poplar suede sofa</p> <p className="text-center lg:text-left mb-4 lg:mb-0">$99.00</p>
               </div>
-              <div className="flex gap-6 flex-col lg:flex-row md:flex-row items-center">
-              <div >
+              <div className="flex gap-6 flex-col lg:flex-row md:flex-row items-center ">
+              <div className="hover:scale-105 duration-300 cursor-pointer shadow-md p-2 rounded-md">
                 <Image
                   src={require("@/public/about-popular/Photo.png")}
                   alt="sofa"
                   width={300}
-                  className="w-[300px] mb-3"
+                  className="w-[300px] mb-3 rounded-md"
                 />
                 <p className="mb-1 text-center lg:text-left">The Dandy Chair</p>
                 <p className="text-center lg:text-left ">$99.00</p>
               </div>
-
-              <div>
+              <div className="hover:scale-105 duration-300 cursor-pointer shadow-md p-2 rounded-md">
                 <Image
                   src={require("@/public/about-popular/Photo (1).png")}
                   alt="sofa"
-                  width={600}
-                  className="w-[300px] mb-3"
+                  width={300}
+                  className="w-[300px] mb-3 rounded-md"
                 />
                 <p className="mb-1 text-center lg:text-left">The Dandy Chair</p>
                 <p className="text-center lg:text-left">$99.00</p>

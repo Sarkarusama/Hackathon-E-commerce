@@ -1,9 +1,57 @@
 "use client";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { GrCart } from "react-icons/gr";
+import { addToCart } from "../actions/actions";
+import Swal from "sweetalert2";
 
+
+export interface Products {
+  _id: string;
+  title: string;
+  description: string;
+  _type:"products";
+  price: number;
+  category: string;
+  badge?: string;
+  priceWithoutDiscount?: number;
+  image?:{
+    asset:{
+      _ref:string,
+      _type:string
+    }
+  };
+  slug:{
+    _type:"slug",
+    current:string
+  },
+  inventory:number
+};
 const Product = () => {
+    const [products, setProducts] = useState<Products[]>([]);
+    useEffect(() => {
+      async function fetchProduct() {
+        const fetchedProduct: Products[] = await client.fetch(
+          `*[_type == "products"]`
+        );
+        setProducts(fetchedProduct);
+      }
+      fetchProduct();
+    }, []);
+    const handleAddToCart =(e:React.MouseEvent,product:Products)=>{
+      e.preventDefault()
+      Swal.fire({
+        position:"top",
+        icon:"success",
+        title:`${product.title} added to cart`,
+        showConfirmButton:false,
+        timer:1000
+      })
+      addToCart(product)
+    }
   return (
     <section>
       {/* all-products */}
@@ -12,246 +60,66 @@ const Product = () => {
           All Products
         </h2>
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_1.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3 ">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold ">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
+        {products.map((product) => (
+            <div
+              className="w-full max-w-[300px] mx-auto shadow-md p-2 rounded-md hover:scale-105 active:scale-100 duration-500 relative"
+              key={product._id}
+            >
+              <Link href={`/dynamicRoute/${product.slug.current}`}>
+                <div className="relative">
+                  {/* Product Image */}
+                  {product.image && (
+                    <Image
+                      src={urlFor(product.image).url()}
+                      alt={product.title}
+                      className="hover:cursor-pointer"
+                      height={300}
+                      width={300}
+                    />
+                  )}
+
+                  {/* Badge - Sales and New */}
+                  {product.badge && (
+                    <span
+                      className={`absolute top-2 left-2 text-xs font-bold py-1 px-2 rounded-full text-white ${
+                        product.badge === "sale"
+                          ? "bg-orange-500"
+                          : product.badge === "new"
+                            ? "bg-green-500"
+                            : ""
+                      }`}
+                      style={{
+                        backgroundColor:
+                          product.badge === "sale" ? "#FF7F32" : "#28a745",
+                        zIndex: 10,
+                      }}
+                    >
+                      {product.badge === "sale" ? "Sale" : "New"}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between mt-3">
+                  <div>
+                    <p className="hover:text-[#029FAE] cursor-pointer text-md">
+                      {product.title}
+                    </p>
+                    <p className="font-bold text-md">
+                      ${product.price}{" "}
+                      {product.priceWithoutDiscount && (
+                        <span className="line-through ml-1 font-normal text-gray-400">
+                          ${product.priceWithoutDiscount}
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                  <button onClick={(e)=>handleAddToCart(e,product)} className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-2 rounded-md cursor-pointer">
+                    <GrCart className="text-lg" />
+                  </button>
+                </div>
+              </Link>
             </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_2.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_3.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_4.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_5.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_6.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_7.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_1.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_9.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold ">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_2.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_3.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto">
-            <Image
-              src={require("@/public/all-product/product_12.png")}
-              alt="chair"
-              height={300}
-              width={300}
-              className="hover:cursor-pointer mx-auto"
-            />
-            <div className="flex items-center justify-between mt-3">
-              <div>
-                <p className="hover:text-[#029FAE] cursor-pointer">
-                  Library Stool Chair{" "}
-                </p>
-                <p className="font-bold">$20</p>
-              </div>
-              <div className="hover:bg-[#029FAE] hover:text-white bg-[#F0F2F3] p-3 text-black rounded-md cursor-pointer">
-                <GrCart className="text-xl" />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
         {/* subscribe-newsletter */}
         <div className="w-full bg-[#F0F2F3] pt-5 lg:pt-10 md:pt-5 mt-10 lg:mt-20 md:mt-20">

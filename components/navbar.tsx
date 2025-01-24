@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { useState } from "react";
-import { HiMenu } from "react-icons/hi"; // Hamburger icon
-import { IoClose } from "react-icons/io5"; // Close icon
 
+import { useState } from "react";
+import { HiMenu } from "react-icons/hi"; 
+import { IoClose } from "react-icons/io5"; 
 import { CgDanger } from "react-icons/cg";
+
 
 import {
   IoCartOutline,
@@ -14,9 +14,13 @@ import {
   IoChevronDownSharp,
 } from "react-icons/io5";
 
+
+
 const Navbar = () => {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
   return (
     <header className="sticky top-0 z-50">
       {/* nav-1-offer */}
@@ -73,6 +77,7 @@ const Navbar = () => {
       <div className=" bg-[#F0F2F3]">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto px-4  py-2 md:py-4 lg:px-0 ">
           {/* Logo Section */}
+            <Link href={"/"}>
           <div className="flex items-center gap-2 font-bold text-xl sm:text-2xl lg:text-3xl">
             <Image
               src={require("@/public/logo/logo-icon.svg")}
@@ -83,16 +88,17 @@ const Navbar = () => {
               Comforty
             </p>
           </div>
+            </Link>
 
           {/* Cart Button */}
           <div>
             <Link href={"/cart"}>
-              <button className="flex items-center bg-white px-5 py-2 gap-2 rounded-md hover:bg-gray-50 text-sm sm:text-base lg:text-lg">
+              <button  className="flex items-center bg-white px-5 py-2 gap-2 rounded-md hover:bg-gray-50 text-sm sm:text-base lg:text-lg">
                 <IoCartOutline className="text-lg sm:text-xl lg:text-2xl" />
                 Cart
-                <span className="w-5 h-5 rounded-full text-center bg-[#007580] text-white md:text-sm sm:text-xs lg:text-sm">
-                  2
-                </span>
+                {/* <span className="w-5 h-5 rounded-full text-center bg-[#007580] text-white md:text-sm sm:text-xs lg:text-sm">
+                  
+                </span> */}
               </button>
             </Link>
           </div>
@@ -115,9 +121,7 @@ const Navbar = () => {
               <li className="hover:text-[#029FAE] cursor-pointer">
                 <Link href="/product">Product</Link>
               </li>
-              <li className="hover:text-[#029FAE] cursor-pointer">
-                <Link href={"/pages"}>Pages</Link>
-              </li>
+              
               <li className="hover:text-[#029FAE] cursor-pointer">
                 <Link href={"/about"}>About</Link>
               </li>
@@ -153,14 +157,12 @@ const Navbar = () => {
                 <Link href="/">Home</Link>
               </li>
               <li className="hover:text-[#029FAE] cursor-pointer">
-                <Link href={"/singleProduct"}>Shop</Link>
+                <Link href={"/cart"}>Shop</Link>
               </li>
               <li className="hover:text-[#029FAE] cursor-pointer">
                 <Link href="/product">Product</Link>
               </li>
-              <li className="hover:text-[#029FAE] cursor-pointer">
-                <Link href={"/pages"}>Pages</Link>
-              </li>
+              
               <li className="hover:text-[#029FAE] cursor-pointer">
                 <Link href={"/about"}>About</Link>
               </li>
@@ -176,32 +178,10 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      
     </header>
   );
 };
 
 export default Navbar;
 
-//  <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center max-w-screen-xl mx-auto px-4 py-2 lg:px-0 ">
-//       {/* Offer Text */}
-//       <p className="text-center text-[12px] lg:text-[13px] text-[#FFFFFF] flex items-center gap-2 mb-2 lg:mb-0 ">
-//         <IoCheckmark className="text-sm lg:text-lg" />
-//         Free shipping on all orders over $50
-//       </p>
-//       {/* Links */}
-//       <div>
-//         <ul className="flex flex-wrap justify-center lg:justify-end gap-5 text-[12px] lg:text-[13px] text-[#FFFFFF]">
-//           <li className="flex items-center gap-1 hover:cursor-pointer hover:text-gray-300">
-//             Eng
-//             <IoChevronDownSharp />
-//           </li>
-//           <li className="hover:cursor-pointer hover:text-gray-300">
-//             <Link href={"/faq"}>Faqs</Link>
-//           </li>
-//           <li className="flex items-center gap-1 hover:cursor-pointer hover:text-gray-300">
-//             <CgDanger className="text-[16px] lg:text-[18px]" />
-//             Need Help
-//           </li>
-//         </ul>
-//       </div>
-//     </div>

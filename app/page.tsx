@@ -4,16 +4,15 @@ import Navbar from "@/components/navbar";
 import NewStyle from "@/components/new-style";
 import Our_Product from "@/components/our_products";
 import Product from "@/components/featured-product";
-import Top_categories from "@/components/top_categories";
-import Image from "next/image";
+import CategoryPage from "@/components/top_categories";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Hero />
       <Company_logo/>
       <Product/>
-      <Top_categories/>
+      <CategoryPage/>
       <NewStyle/>
       <Our_Product/>
     </div>

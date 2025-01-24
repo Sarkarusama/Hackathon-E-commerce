@@ -26,7 +26,7 @@ const Hero = () => {
             <Image
               src={require("@/public/hero/product-image@2x.png")}
               alt="chair"
-              width={300} // Reduced image size for all screens
+              width={300} 
               height={300}
               className="hover:cursor-pointer mx-auto w-full max-w-[300px] sm:max-w-[350px] md:max-w-[450px] lg:max-w-[500px] h-auto"
             />
@@ -39,15 +39,4 @@ const Hero = () => {
 
 export default Hero;
 
-// <section>
-//     <div className="w-full">
-//     <div className="w-[1250px] mx-auto flex items-center bg-[#F0F2F3] px-20 py-24">
-//       <div>
-//         <p className="text-[14px] text-[#636270] mb-6">WELCOME TO CHAIRY</p>
-//         <p className="text-[60px] font-bold text-[#272343] mr-40 leading-[65px]">Best Furniture Collection for your interior.</p>
-//         <button className="bg-[#029FAE] text-white px-5 py-2 text-[14px] flex gap-4 items-center rounded-md mt-8 hover:bg-[#02a0aece]">Shop Now <FaArrowRightLong /></button>
-//       </div>
-//       <div><Image src={require("@/public/hero/product-image@2x.png")} alt="chair" width={700} height={700} className='hover:cursor-pointer'/></div>
-//     </div>
-//     </div>
-//     </section>
+
