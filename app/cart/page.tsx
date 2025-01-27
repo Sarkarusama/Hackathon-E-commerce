@@ -8,6 +8,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/actions";
 import Swal from "sweetalert2";
 import { urlFor } from "@/sanity/lib/image";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<Products[]>([]);
@@ -51,23 +52,27 @@ const Cart = () => {
 
   const calculatedTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.inventory, 0);
+
   };
 
+  const router = useRouter( )
   const handleProceed = () => {
-    Swal.fire({
-      title: "Proceed to Checkout",
-      text: "Please review your cart before checkout",
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d5",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Proceed!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Success", "Your order has been successfully processed.", "success");
+    router.push("/checkOut")
         setCartItems([]);
-      }
-    });
+    // Swal.fire({
+    //   title: "Proceed to Checkout",
+    //   text: "Please review your cart before checkout",
+    //   icon: "question",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d5",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, Proceed!",
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     Swal.fire("Success", "Your order has been successfully processed.", "success");
+        
+    //   }
+    // });
   };
 
   return (

@@ -10,6 +10,7 @@
     "migrate": "node scripts/migrate.mjs"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.10.2",
     "@reduxjs/toolkit": "^2.5.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.70.0",
@@ -22,7 +23,8 @@
     "react-redux": "^9.2.0",
     "sanity": "^3.70.0",
     "styled-components": "^6.1.14",
-    "sweetalert2": "^11.15.10"
+    "sweetalert2": "^11.15.10",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
