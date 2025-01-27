@@ -147,7 +147,7 @@ const Cart = () => {
               onClick={handleProceed}
               className="bg-[#029FAE] px-20 py-3 rounded-full w-full hover:bg-[#02a0aece] text-white mb-5 lg:mb-20 "
             >
-              Member Checkout
+              Checkout
             </button>
           </div>
         </div>

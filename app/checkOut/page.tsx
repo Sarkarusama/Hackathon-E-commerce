@@ -8,7 +8,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { CgChevronRight } from "react-icons/cg";
 import Swal from "sweetalert2";
 
-const checkout = () => {
+const Checkout = () => {
   const [cartItems, setCartItems] = useState<Products[]>([]);
   const [discount, setDiscount] = useState<number>(0);
   const [formValue, setFormValue] = useState({
@@ -246,7 +246,7 @@ const checkout = () => {
                         )
                      }
                 </div>
-                <button onClick={handleProceed} className="w-full h-12 bg-[#02a0aece] text-white">Place Order</button>
+                <button onClick={handleProceed} className="w-full h-12 bg-[#02a0aece] rounded-full text-white">Place Order</button>
             </div>
           </div>
         </div>
@@ -255,4 +255,4 @@ const checkout = () => {
   );
 };
 
-export default checkout;
+export default Checkout;
