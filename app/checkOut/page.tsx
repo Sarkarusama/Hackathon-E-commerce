@@ -98,7 +98,7 @@ const Checkout = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 ">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
           <div className="bg-white border rounded-lg mb-4 p-4 shadow-md">
             <h2>Order Summery</h2>
             {cartItems.length > 0 ? (
@@ -139,7 +139,7 @@ const Checkout = () => {
                     <input
                      type="text" 
                      id="firstName"
-                     placeholder="Enter Your First Name"
+                     placeholder="First Name"
                      value={formValue.firstName}
                      onChange={handleInputChange}
                      className="border grid grid-cols-1 lg:grid-cols-2 mt-1 p-2 w-full hover:border-[#02a0aece] "
@@ -155,7 +155,7 @@ const Checkout = () => {
                     <input
                      type="text" 
                      id="lastName"
-                     placeholder="Enter Your Last Name"
+                     placeholder="Last Name"
                      value={formValue.lastName}
                      onChange={handleInputChange}
                      className="border grid grid-cols-1 lg:grid-cols-2 mt-1 p-2 w-full hover:border-[#02a0aece] "
@@ -171,7 +171,7 @@ const Checkout = () => {
                     <input
                      type="text" 
                      id="address"
-                     placeholder="Enter Your Address"
+                     placeholder="236 5th SE Avenue, New York, United States"
                      value={formValue.address}
                      onChange={handleInputChange}
                      className="border grid grid-cols-1 lg:grid-cols-2 mt-1 p-2 w-full hover:border-[#02a0aece] "
@@ -187,7 +187,7 @@ const Checkout = () => {
                     <input
                      type="email" 
                      id="email"
-                     placeholder="Enter Your Email Address"
+                     placeholder="example@gmail.com"
                      value={formValue.email}
                      onChange={handleInputChange}
                      className="border grid grid-cols-1 lg:grid-cols-2 mt-1 p-2 w-full hover:border-[#02a0aece] "
@@ -203,7 +203,7 @@ const Checkout = () => {
                     <input
                      type="text" 
                      id="phone"
-                     placeholder="Phone Number"
+                     placeholder="92 32-546-6789"
                      value={formValue.phone}
                      onChange={handleInputChange}
                      className="border grid grid-cols-1 lg:grid-cols-2 mt-1 p-2 w-full hover:border-[#02a0aece] "

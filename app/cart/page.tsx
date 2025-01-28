@@ -57,7 +57,7 @@ const Cart = () => {
 
   const router = useRouter( )
   const handleProceed = () => {
-    router.push("/checkOut")
+    router.push("/CheckOut")
         setCartItems([]);
     // Swal.fire({
     //   title: "Proceed to Checkout",
