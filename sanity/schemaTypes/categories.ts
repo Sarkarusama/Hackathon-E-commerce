@@ -26,7 +26,7 @@ export const categorySchema = defineType({
             title: 'Slug',
             type: 'slug',
             options: {
-                source: 'title', // Slug will be generated from the title
+                source: 'title', 
                 maxLength: 96,
               },
         }
