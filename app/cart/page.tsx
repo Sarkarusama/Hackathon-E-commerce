@@ -3,7 +3,6 @@
 import { Products } from "@/components/featured-product";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-// import { CiHeart } from "react-icons/ci";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/actions";
 import Swal from "sweetalert2";
@@ -59,20 +58,6 @@ const Cart = () => {
   const handleProceed = () => {
     router.push("/CheckOut")
         setCartItems([]);
-    // Swal.fire({
-    //   title: "Proceed to Checkout",
-    //   text: "Please review your cart before checkout",
-    //   icon: "question",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d5",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes, Proceed!",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     Swal.fire("Success", "Your order has been successfully processed.", "success");
-        
-    //   }
-    // });
   };
 
   return (
