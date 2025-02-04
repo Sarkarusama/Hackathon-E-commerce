@@ -118,7 +118,7 @@ const Navbar = () => {
                 <Link href="/">Home</Link>
               </li>
               <li className="hover:text-[#029FAE] cursor-pointer">
-                <Link href={"/singleProduct"}>Shop</Link>
+                <Link href={"/cart"}>Shop</Link>
               </li>
               <li className="hover:text-[#029FAE] cursor-pointer">
                 <Link href="/product">Product</Link>
