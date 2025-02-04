@@ -66,7 +66,7 @@ const handleAddToCart =(e:React.MouseEvent,product:Products)=>{
               className="w-full max-w-[300px] mx-auto shadow-md p-2 rounded-md hover:scale-105 active:scale-100 duration-500 relative"
               key={product._id}
             >
-              <Link  href={`/dynamicRoute/${product.slug.current}`} >
+              <Link  href={`/products/${product.slug.current}`} >
                 <div className="relative">
                   {/* Product Image */}
                   {product.image && (
