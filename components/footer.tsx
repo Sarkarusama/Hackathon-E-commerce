@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
       </div>
       </div>
-      <div className="max-w-screen-xl mb-0 lg:mb-10 md:mb-5 h-[60px] flex items-center justify-between mx-auto text-[14px] lg:text-[16px] md:[16px] text-[#636270] flex-col md:flex-row lg:flex-row px-4 lg:px-0 ">
+      <div className="max-w-screen-xl mb-4 lg:mb-4 md:mb-5 h-[60px] flex items-center justify-between mx-auto text-[14px] lg:text-[16px] md:[16px] text-[#636270] flex-col md:flex-row lg:flex-row px-4 lg:px-0 ">
         <p className="flex ">@ 2021 - Blogy - Designed & Develop by <span className="font-bold ml-1"> Zakirsoft</span></p>
         <div className="flex gap-5 hover:cursor-pointer">
           <Image src={require("@/public/foot-icons/mastercard_1.png")} alt="mastercard-logo"/>

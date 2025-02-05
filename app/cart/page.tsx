@@ -8,6 +8,7 @@ import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/act
 import Swal from "sweetalert2";
 import { urlFor } from "@/sanity/lib/image";
 import { useRouter } from "next/navigation";
+import AuthGuard from "@/components/AuthGuard";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<Products[]>([]);
@@ -61,6 +62,7 @@ const Cart = () => {
   };
 
   return (
+    <AuthGuard>
     <section>
       <div className="max-w-screen-xl mx-auto px-4 lg:px-0">
         <h2 className="font-bold text-3xl mb-7 mt-10 text-center">Bag</h2>
@@ -138,6 +140,7 @@ const Cart = () => {
         </div>
       </div>
     </section>
+    </AuthGuard>
   );
 };
 

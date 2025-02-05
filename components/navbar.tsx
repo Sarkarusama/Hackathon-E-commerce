@@ -13,6 +13,7 @@ import {
   IoCheckmark,
   IoChevronDownSharp,
 } from "react-icons/io5";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 
 
@@ -21,6 +22,7 @@ const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
   
   return (
     <header className="sticky top-0 z-50">
@@ -78,7 +80,9 @@ const Navbar = () => {
       <div className=" bg-[#F0F2F3]">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto px-4  py-2 md:py-4 lg:px-0 ">
           {/* Logo Section */}
+          
             <Link href={"/"}>
+         
           <div className="flex items-center gap-2 font-bold text-xl sm:text-2xl lg:text-3xl">
             <Image
               src={require("@/public/logo/logo-icon.svg")}
@@ -92,7 +96,7 @@ const Navbar = () => {
             </Link>
 
           {/* Cart Button */}
-          <div>
+          <div className="flex gap-2">
             <Link href={"/cart"}>
               <button  className="flex items-center bg-white px-2 py-2 gap-1 rounded-md hover:bg-gray-50 text-sm sm:text-base lg:text-lg">
                 <IoCartOutline className="text-lg sm:text-xl lg:text-2xl" />
@@ -102,7 +106,11 @@ const Navbar = () => {
                 </span> */}
               </button>
             </Link>
+           
             {/* <UserButton/> */}
+            <SignedIn>
+              <UserButton/>
+            </SignedIn>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 // "use client"
 
+import AddToCartButton from "@/components/addToCartButton";
 import { Products } from "@/components/featured-product";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -73,7 +74,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.description}
               </p>
 
-              <div className="flex gap-5 items-center border w-fit py-1 px-3 mt-3 cursor-pointer">
+              {/* <div className="flex gap-5 items-center border w-fit py-1 px-3 mt-3 cursor-pointer">
                 <p>Quantity</p>
                 <span className="text-md hover:text-[#029FAE] " >
                   <FaMinus />
@@ -82,11 +83,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <span className="text-md hover:text-[#029FAE]" >
                   <FaPlus />
                 </span>
-              </div>
-              <button className="text-[14px] lg:text-[18px] md:text-[14px] bg-[#029FAE] px-5 py-2 text-white rounded-md lg:mt-6 mt-3 md:mt-3 flex gap-2 items-center font-bold hover:bg-[#02a0aece]">
-                <GrCart className="text-md" />
-                Add to Cart
-              </button>
+              </div> */}
+             <AddToCartButton product={product} />
             </div>
           </div>
         </div>
