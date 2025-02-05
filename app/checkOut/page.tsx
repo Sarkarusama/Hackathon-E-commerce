@@ -9,7 +9,7 @@ import { CgChevronRight } from "react-icons/cg";
 import Swal from "sweetalert2";
 import { client } from "@/sanity/lib/client";
 
-const Checkout = () => {
+const CheckOut = () => {
   const [cartItems, setCartItems] = useState<Products[]>([]);
   const [discount, setDiscount] = useState<number>(0);
   const [formValue, setFormValue] = useState({
@@ -293,4 +293,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckOut;
