@@ -57,7 +57,7 @@ const Cart = () => {
 
   const router = useRouter( )
   const handleProceed = () => {
-    router.push("/CheckOut")
+    router.push("/checkOut")
         setCartItems([]);
   };
 
