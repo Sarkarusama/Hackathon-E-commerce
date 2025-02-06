@@ -60,33 +60,54 @@ const CheckOut = () => {
     setFormError(errors);
     return Object.values(errors).every((error) => !error);
   };
+  
   const handlePlaceOrder = async () => {
     Swal.fire({
-      title: "processing your Order",
+      title: "Processing your Order",
       text: "Please wait a moment.",
       icon: "info",
       showCancelButton: true,
       confirmButtonColor: "#3085d5",
       cancelButtonColor: "#d33",
       confirmButtonText: "Proceed",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         if (validateForm()) {
+          // Clear cart in localStorage
+          localStorage.removeItem("cartItems");
           localStorage.removeItem("appliedDiscount");
+  
+          // Clear the cartItems state (force re-render)
+          setCartItems([]); // This will remove items from the cart
+  
+          // Reset form state
+          setFormValue({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            address: "",
+            zipCode: "",
+            city: "",
+          });
+  
+          // Show success alert
           Swal.fire(
             "Success!",
-            "Your Order has been successfully processed!",
+            "Your order has been successfully processed!",
             "success"
           );
-        }else{
+        } else {
           Swal.fire(
             "Error",
             "Please fill in all the fields before processing.",
             "error"
-          )
+          );
         }
       }
     });
+  
+    // Create order data
     const orderData = {
       _type: "order",
       firstName: formValue.firstName,
@@ -96,21 +117,27 @@ const CheckOut = () => {
       address: formValue.address,
       zipCode: formValue.zipCode,
       city: formValue.city,
-      cartItems: cartItems.map(item => ({
+      cartItems: cartItems.map((item) => ({
         _type: "reference",
         _ref: item._id,
       })),
       total: subTotal,
       discount: discount,
-      orderData: new Date().toISOString,
+      orderData: new Date().toISOString(),
     };
+  
     try {
+      // Save order to Sanity
       await client.create(orderData);
+  
+      // Remove discount after order is placed
       localStorage.removeItem("appliedDiscount");
-    } catch(error) {
-      console.error("Error Creating Order",error);
+    } catch (error) {
+      console.error("Error Creating Order", error);
     }
   };
+  
+  
   return (
     <div className="bg-white ">
       <div className=" bg-[#F0F2F3]">
@@ -279,12 +306,14 @@ const CheckOut = () => {
                   <p className="text-sm text-red-700">City Name is Required!</p>
                 )}
               </div>
-              <button
+               <button
                 onClick={handlePlaceOrder}
+                
                 className="w-full h-12 bg-[#02a0aece] rounded-full text-white"
               >
-                Place Order
+                Place Order{}
               </button>
+             
             </div>
           </div>
         </div>
